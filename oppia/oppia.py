@@ -33,17 +33,17 @@ class OppiaXBlock(XBlock):
     _EVENT_NAME_EXPLORATION_COMPLETED = 'oppia.exploration.completed'
     _EVENT_NAME_STATE_TRANSITION = 'oppia.exploration.state.changed'
 
-    display_name = String(
-        help="Display name of the component",
-        default="Oppia Exploration",
+     display_name = String(
+        help=_("Display name of the component"),
+        default=_("Oppia Exploration"),
         scope=Scope.content)
     oppiaid = String(
-        help="ID of the Oppia exploration to embed",
-        default="4",
+        help=_("ID of the Oppia exploration to embed"),
+        default=_("4"),
         scope=Scope.content)
     src = String(
-        help="Source URL of the site",
-        default="https://www.oppia.org",
+        help=_("Source URL of the site"),
+        default=_("https://www.oppia.org"),
         scope=Scope.content)
 
     def resource_string(self, path):
@@ -59,7 +59,7 @@ class OppiaXBlock(XBlock):
         html = self.resource_string("static/html/oppia.html")
         frag = Fragment(html.format(self=self))
         frag.add_javascript(
-            self.resource_string('static/lib/oppia-player-0.0.1-modified.js'))
+            self.resource_string('static/lib/oppia-player-0.0.3.js'))
         frag.add_javascript(self.resource_string("static/js/oppia.js"))
         frag.initialize_js('OppiaXBlock')
         return frag
@@ -118,7 +118,7 @@ class OppiaXBlock(XBlock):
 
         js_str = pkg_resources.resource_string(
             __name__, "static/js/oppia_edit.js")
-        frag.add_javascript(six.text_type(js_str))
+        frag.add_javascript(str(js_str))
         frag.initialize_js('OppiaXBlockEditor')
 
         return frag
@@ -139,8 +139,8 @@ class OppiaXBlock(XBlock):
         """A canned scenario for display in the workbench."""
         return [
             ("Oppia Embedding",
-             """<vertical_demo>
-                <oppia oppiaid="0" src="https://www.oppia.org"/>
+              """<vertical_demo>
+                <oppia oppia-id="fjJDek214F2g" src="https://www.oppia.org" exploration-version="3"></oppia>
                 </vertical_demo>
              """),
         ]
