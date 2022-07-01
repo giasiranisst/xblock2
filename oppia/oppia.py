@@ -32,8 +32,8 @@ class OppiaXBlock(XBlock):
     _EVENT_NAME_EXPLORATION_LOADED = 'oppia.exploration.loaded'
     _EVENT_NAME_EXPLORATION_COMPLETED = 'oppia.exploration.completed'
     _EVENT_NAME_STATE_TRANSITION = 'oppia.exploration.state.changed'
-
-     display_name = String(
+    
+    display_name = String(
         help=_("Display name of the component"),
         default=_("Oppia Exploration"),
         scope=Scope.content)
